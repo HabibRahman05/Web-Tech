@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Name Validation</title>
+</head>
+<body>
+  <form onsubmit="return validateName()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" pattern="[A-Za-z\s]+" required>
+    <small>Only letters and spaces allowed</small>
+    <br><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validateName() {
+      const nameField = document.getElementById("name");
+      const regex = /^[A-Za-z\s]+$/;
+      if (!regex.test(nameField.value)) {
+        alert("Please enter a valid name (letters and spaces only).");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>
