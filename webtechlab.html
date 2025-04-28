@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <style>
+      header div {
+        margin: 0 auto;
+      }
+      main h1 {
+        text-align: center;
+      }
+      .logo {
+        background-color: gray;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        border-radius: 50%;
+        margin: 0 auto;
+      }
+     
+      .container {
+        background-color: #f1f1f1;
+        max-width: 800px;
+        height: auto;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+      }
+     
+      .column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+     
+      .register {
+        border: 2px solid black;
+        flex: 1;
+        padding: 20px;
+        background-color: white;
+      }
+     
+      .purple, .black {
+        flex: 1;
+      }
+     
+      .purple {
+        background-color: purple;
+      }
+     
+      .black {
+        background-color: black;
+      }
+     
+      .register-form h2 {
+        text-align: center;
+      }
+      
+      form label {
+        display: block;
+        margin-top: 10px;
+      }
+      
+      form input[type="text"],
+      form input[type="email"],
+      form input[type="password"],
+      form input[type="date"],
+      form select,
+      form textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        box-sizing: border-box;
+      }
+      
+      form button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      
+      form button:hover {
+        background-color: #45a049;
+      }
+      
+      .error {
+        color: red;
+        font-size: 12px;
+        margin-top: 2px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo"></div>
+    </header>    
+    <main>    
+      <h1>Registration Form</h1>
+      <div class="container">
+        <div class="column">
+          <div class="register">
+            <form class="register-form" id="registrationForm">
+              <h2>Register</h2>
+              <label for="fullname">Full Name:</label>
+              <input type="text" id="fullname" name="fullname" required />
+              <div id="fullnameError" class="error"></div>
+ 
+              <label for="email">Email:</label>  
+              <input type="email" id="email" name="email" required />
+              <div id="emailError" class="error"></div>
+ 
+              <label for="password">Password (min 8 characters):</label>
+              <input type="password" id="password" name="password" minlength="8" required />
+              <div id="passwordError" class="error"></div>
+ 
+              <label for="confirm-password">Confirm Password:</label>
+              <input type="password" id="confirm-password" name="confirm-password" required />
+              <div id="confirmPasswordError" class="error"></div>
+ 
+              <label for="dob">Date of Birth (must be 18+):</label>
+              <input type="date" id="dob" name="dob" required />
+              <div id="dobError" class="error"></div>
+              
+              <label for="country">Country:</label>
+              <select id="country" name="country" required>
+                <option value="">Select</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="India">India</option>
+                <option value="Pakistan">Pakistan</option>
+                <option value="Nepal">Nepal</option>
+                <option value="USA">USA</option>
+                <option value="Palestine">Palestine</option>
+                <option value="Australia">Australia</option>
+              </select>
+              <div id="countryError" class="error"></div>
+ 
+              <label>Gender:</label>
+              <div>
+                <input type="radio" id="male" name="gender" value="male" required />
+                <label for="male" style="display: inline;">Male</label>
+                <input type="radio" id="female" name="gender" value="female" required />
+                <label for="female" style="display: inline;">Female</label>
+              </div>
+              <div id="genderError" class="error"></div>
+ 
+              <label for="color">Favorite Color:</label>
+              <input type="color" id="color" name="color" />
+             
+              <label for="opinion">Your Opinion:</label>
+              <textarea id="opinion" name="opinion" rows="3"></textarea>
+ 
+              <input type="checkbox" id="terms" name="terms" required />
+              <label for="terms" style="display: inline;">I agree to the <a href="#">terms and conditions</a></label>
+              <div id="termsError" class="error"></div>
+ 
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="column">
+          <div class="black"></div>
+          <div class="purple"></div> 
+        </div>
+      </div>
+    </main>  
+
+    <script>
+      document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        clearErrors();
+        
+        let isValid = true;
+        
+        // Full Name validation (no spaces)
+        const fullname = document.getElementById('fullname').value.trim();
+        if (fullname === '') {
+          showError('fullnameError', 'Full name is required');
+          isValid = false;
+        } else if (fullname.includes(' ')) {
+          showError('fullnameError', 'Full name should not contain spaces');
+          isValid = false;
+        }
+        
+        // Email validation
+        const email = document.getElementById('email').value.trim();
+        if (email === '') {
+          showError('emailError', 'Email is required');
+          isValid = false;
+        } else if (!validateEmail(email)) {
+          showError('emailError', 'Please enter a valid email');
+          isValid = false;
+        }
+        
+        // Password validation
+        const password = document.getElementById('password').value;
+        if (password === '') {
+          showError('passwordError', 'Password is required');
+          isValid = false;
+        } else if (password.length < 8) {
+          showError('passwordError', 'Password must be at least 8 characters');
+          isValid = false;
+        }
+        
+        // Confirm Password validation
+        const confirmPassword = document.getElementById('confirm-password').value;
+        if (confirmPassword === '') {
+          showError('confirmPasswordError', 'Please confirm your password');
+          isValid = false;
+        } else if (password !== confirmPassword) {
+          showError('confirmPasswordError', 'Passwords do not match');
+          isValid = false;
+        }
+        
+        // Date of Birth validation (must be 18+)
+        const dob = document.getElementById('dob').value;
+        if (dob === '') {
+          showError('dobError', 'Date of birth is required');
+          isValid = false;
+        } else {
+          const dobDate = new Date(dob);
+          const today = new Date();
+          let age = today.getFullYear() - dobDate.getFullYear();
+          const monthDiff = today.getMonth() - dobDate.getMonth();
+          
+          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
+            age--;
+          }
+          
+          if (age < 18) {
+            showError('dobError', 'You must be at least 18 years old');
+            isValid = false;
+          }
+        }
+        
+        // Country validation
+        const country = document.getElementById('country').value;
+        if (country === '') {
+          showError('countryError', 'Please select a country');
+          isValid = false;
+        }
+        
+        // Gender validation
+        const gender = document.querySelector('input[name="gender"]:checked');
+        if (!gender) {
+          showError('genderError', 'Please select a gender');
+          isValid = false;
+        }
+        
+        // Terms validation
+        const terms = document.getElementById('terms').checked;
+        if (!terms) {
+          showError('termsError', 'You must agree to the terms and conditions');
+          isValid = false;
+        }
+        
+        if (isValid) {
+          alert('Form submitted successfully!');
+          // this.submit(); // Uncomment this line to actually submit the form
+        }
+      });
+      
+      function showError(elementId, message) {
+        const errorElement = document.getElementById(elementId);
+        errorElement.textContent = message;
+      }
+      
+      function clearErrors() {
+        const errorElements = document.querySelectorAll('.error');
+        errorElements.forEach(element => {
+          element.textContent = '';
+        });
+      }
+      
+      function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+    </script>
+  </body>
+</html>

@@ -1,28 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Name Validation</title>
-</head>
-<body>
-  <form onsubmit="return validateName()">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" pattern="[A-Za-z\s]+" required>
-    <small>Only letters and spaces allowed</small>
-    <br><br>
-    <button type="submit">Submit</button>
-  </form>
-
-  <script>
-    function validateName() {
-      const nameField = document.getElementById("name");
-      const regex = /^[A-Za-z\s]+$/;
-      if (!regex.test(nameField.value)) {
-        alert("Please enter a valid name (letters and spaces only).");
-        return false;
-      }
-      return true;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Registration Form</title>
+    <style>
+    header div {
+      margin: 0 auto;
     }
-  </script>
-</body>
+    main h1 {
+      text-align: center;
+    }
+    .logo {
+      background-color: gray;
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      border-radius: 50%;
+    }
+     
+    .continer {
+      background-color: #f1f1f1;
+      max-width: 800px;
+      height: auto;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+    }
+     
+    .column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+     
+    .register {
+      
+      border: 2px solid black;
+      flex: 1;
+      padding: 20px;
+    }
+     
+    .green, .blue {
+      flex: 1;
+    }
+     
+    .green {
+      background-color: black;
+    }
+     
+    .blue {
+      background-color: purple;
+    }
+    
+     
+    
+    .register-form h2 {
+      text-align: center;
+    }
+  </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo"></div>
+    </header>    <main>    
+      <h1>Registration Form</h1>
+      <div class="continer">
+        <div class="column">
+          <div class="register">
+            <form class="register-form" >
+              <h2>Register</h2>
+              <label for="fullname">Full Name:</label>
+              <input type="text" id="fullname" name="fullname" pattern="[A-Za-z\s]+" required /><br />
+ 
+              <label for="email">Email:</label>  
+              <input type="email" id="email" name="email" required /><br />
+ 
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" minlength="8" required /><br />
+ 
+              <label for="confirm-password">Confirm Password:</label>
+              <input type="password" id="confirm-password" name="confirm-password" minlength="8" required /><br />
+ 
+              <label for="dob">Date of Birth:</label>
+              <input type="date" id="dob" name="dob" required /><br />
+              
+ 
+              <label for="country">Country:</label>
+              <select id="country" name="country" required>
+                <option value="country">Select</option>
+                <option value="country">Bangladesh</option>
+                <option value="country">India</option>
+                <option value="country">Pakistan</option>
+                <option value="country">Nepal</option>
+                <option value="country">USA</option>
+                <option value="country">Palestine</option>
+                <option value="country">Australia</option>
+              </select><br /><br />
+ 
+              <label>Gender:</label>
+              <input type="radio" id="male" name="gender" value="male" required />
+              <label for="male">Male</label>
+              <input type="radio" id="female" name="gender" value="female" required />
+              <label for="female">Female</label><br />
+ 
+              <label for="color">Favorite Color:</label>
+              <input type="color" id="color" name="color" /><br />
+             
+              <label for="opinion">Your Opinion:</label><br />
+              <textarea id="opinion" name="opinion" rows="3" cols="25 px"></textarea><br />
+ 
+              <input type="checkbox" id="terms" name="terms" required />
+              <label for="terms">I agree to the <a href="#" >terms and conditions</a></label><br />
+ 
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="column">
+          <div class="blue"></div>
+          <div class="green"></div> 
+        </div>
+      </div>
+   </main>
+  </body>
 </html>
