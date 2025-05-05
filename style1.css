@@ -18,7 +18,7 @@ main h1 {
   max-width: 800px;
   height: auto;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
   display: flex;
 }
 
@@ -29,22 +29,30 @@ main h1 {
 }
 
 .register {
-  border: 2px solid black;
   flex: 1;
   padding: 20px;
-  background-color: white;
+  background-color:whitesmoke;
+  border: 1px solid black;
 }
 
-.purple, .black {
-  flex: 1;
+.top-right {
+  background-color: rgb(249, 108, 108);
+  flex: 0.25;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.purple {
-  background-color: purple;
-}
-
-.black {
-  background-color: black;
+.bottom-right {
+  background-color: rgb(112, 112, 189);
+  flex: 0.75;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
 }
 
 .register-form h2 {
@@ -85,4 +93,44 @@ form button:hover {
   color: red;
   font-size: 12px;
   margin-top: 2px;
+}
+
+.login-form {
+  padding: 10px;
+}
+
+.login-form label {
+  display: block;
+  margin-top: 10px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.info-table th,
+.info-table td {
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: center;
+}
+
+.info-table tr {
+  height: 40px;
+}
+
+.info-table thead {
+  background-color: #ddd;
+  text-align: center ;
 }

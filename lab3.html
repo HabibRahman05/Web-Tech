@@ -19,27 +19,27 @@
             <form class="register-form" id="registrationForm">
               <h2>Register</h2>
               <label for="fullname">Full Name:</label>
-              <input type="text" id="fullname" name="fullname" required />
+              <input type="text" id="fullname" name="fullname"/>
               <div id="fullnameError" class="error"></div>
  
               <label for="email">Email:</label>  
-              <input type="email" id="email" name="email" required />
+              <input type="email" id="email" name="email"/>
               <div id="emailError" class="error"></div>
  
               <label for="password">Password (min 8 characters):</label>
-              <input type="password" id="password" name="password" minlength="8" required />
+              <input type="password" id="password" name="password" minlength="8"/>
               <div id="passwordError" class="error"></div>
 
               <label for="confirm-password">Confirm Password:</label>
-              <input type="password" id="confirm-password" name="confirm-password" required />
+              <input type="password" id="confirm-password" name="confirm-password"/>
               <div id="confirmPasswordError" class="error"></div>
  
               <label for="dob">Date of Birth (must be 18+):</label>
-              <input type="date" id="dob" name="dob" required />
+              <input type="date" id="dob" name="dob"/>
               <div id="dobError" class="error"></div>
               
               <label for="country">Country:</label>
-              <select id="country" name="country" required>
+              <select id="country" name="country">
                 <option value="">Select</option>
                 <option value="Bangladesh">Bangladesh</option>
                 <option value="India">India</option>
@@ -53,9 +53,9 @@
  
               <label>Gender:</label>
               <div>
-                <input type="radio" id="male" name="gender" value="male" required />
+                <input type="radio" id="male" name="gender" value="male"/>
                 <label for="male" style="display: inline;">Male</label>
-                <input type="radio" id="female" name="gender" value="female" required />
+                <input type="radio" id="female" name="gender" value="female"/>
                 <label for="female" style="display: inline;">Female</label>
               </div>
               <div id="genderError" class="error"></div>
@@ -66,7 +66,7 @@
               <label for="opinion">Your Opinion:</label>
               <textarea id="opinion" name="opinion" rows="3"></textarea>
  
-              <input type="checkbox" id="terms" name="terms" required />
+              <input type="checkbox" id="terms" name="terms"/>
               <label for="terms" style="display: inline;">I agree to the <a href="#">terms and conditions</a></label>
               <div id="termsError" class="error"></div>
  
@@ -74,12 +74,47 @@
             </form>
           </div>
         </div>
+    
         <div class="column">
-          <div class="black"></div>
-          <div class="purple"></div> 
+          <div class="top-right">
+            <form class="login-form">
+              <h2 style="text-align:center;">Login</h2>
+        
+              <label for="login-fullname">Username:</label>
+              <input type="text" id="login-fullname" name="login-fullname"/>
+        
+              <label for="login-password">Password:</label>
+              <input type="password" id="login-password" name="login-password"/>
+        
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+          <div class="bottom-right">
+            <table class="info-table">
+              <thead>
+                <tr>
+                  <th>City</th>
+                  <th>AQI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+              </tbody>
+            </table>
+          </div> 
         </div>
       </div>
     </main>
-    <script src='srcipt.js'></script>
+    <script src="script.js"></script>
   </body>
 </html>
